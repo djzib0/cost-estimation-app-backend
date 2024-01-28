@@ -37,4 +37,7 @@ public class SettingService {
         return settingRepository.save(newSetting);
     }
 
+    public Setting getSettingByAppUserId(Long appUserId) {
+        return settingRepository.findByAppUserId(appUserId);
+    }
 }

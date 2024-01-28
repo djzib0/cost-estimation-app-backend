@@ -42,4 +42,8 @@ public class AppUserService {
         appUserRepository.save(newAppUser);
         return newAppUser;
     }
+
+    public AppUser getAppUser(Long appUserId) {
+        return appUserRepository.findById(appUserId).orElseThrow();
+    }
 }

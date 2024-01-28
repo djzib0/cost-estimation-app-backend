@@ -28,9 +28,15 @@ public class SettingController {
         return settingService.getAllSettings();
     }
 
+    @GetMapping("data/settings/user/{id}")
+    public Setting getSettingByAppUserId(@PathVariable("id") Long appUserId) {
+        return settingService.getSettingByAppUserId(appUserId);
+    }
 
     @PostMapping("data/settings/add")
     public Setting addSetting(@RequestBody Setting setting) {
         return settingService.addSetting(setting);
     }
+
+
 }
