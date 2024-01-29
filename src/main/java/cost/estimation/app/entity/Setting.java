@@ -26,7 +26,5 @@ public class Setting {
     @JsonIgnore
     @JsonProperty
     private AppUser appUser;
-    @ManyToOne
-    @JoinColumn(name = "theme_id")
-    private Theme theme;
+    private String theme;
 }

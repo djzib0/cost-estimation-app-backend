@@ -5,22 +5,16 @@ CREATE TABLE app_user(
     date_created DATE DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE theme(
-    theme_id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(50)
-);
-
 CREATE TABLE setting(
     setting_id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    theme_id BIGINT,
-    app_user_id BIGINT
---    FOREIGN KEY (user_id) REFERENCES app_user(user_id),
---    FOREIGN KEY (theme_id) REFERENCES theme(theme_id)
+    app_user_id BIGINT,
+    theme VARCHAR(20)
 );
 
-CREATE SEQUENCE setting_sequence
-start with 0
-increment by 1
-minvalue 0
-maxvalue 100
-cycle;
+CREATE TABLE material_grade_dic(
+    material_grade_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    eu_symbol VARCHAR(100),
+    ger_symbol VARCHAR(100)
+);
+
+

@@ -40,4 +40,14 @@ public class SettingService {
     public Setting getSettingByAppUserId(Long appUserId) {
         return settingRepository.findByAppUserId(appUserId);
     }
+
+    @Transactional
+    public Setting updateSetting(Setting setting) {
+        Setting settingEdited = settingRepository.findById(setting.getSettingId()).orElseThrow();
+        AppUser appUser = appUserRepository.findById(setting.getAppUserId()).orElseThrow();
+        settingEdited.setAppUser(appUser);
+        settingEdited.setAppUserId(appUser.getAppUserId());
+        settingEdited.setTheme(setting.getTheme());
+        return settingEdited;
+    }
 }

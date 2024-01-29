@@ -38,5 +38,10 @@ public class SettingController {
         return settingService.addSetting(setting);
     }
 
+    @PutMapping("data/settings/{id}")
+    public Setting updateSetting(@RequestBody Setting setting) {
+        return settingService.updateSetting(setting);
+    }
+
 
 }
