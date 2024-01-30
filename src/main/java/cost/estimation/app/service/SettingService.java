@@ -6,10 +6,10 @@ import cost.estimation.app.repository.AppUserRepository;
 import cost.estimation.app.repository.SettingRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class SettingService {
@@ -37,6 +37,7 @@ public class SettingService {
         return settingRepository.save(newSetting);
     }
 
+    @Cacheable(value = "Settings")
     public Setting getSettingByAppUserId(Long appUserId) {
         return settingRepository.findByAppUserId(appUserId);
     }
