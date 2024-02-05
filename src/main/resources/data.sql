@@ -16,7 +16,11 @@ INSERT INTO setting(app_user_id, theme) VALUES(
 
 --
 INSERT INTO material_grade_dic(eu_symbol, ger_symbol) VALUES (
-'S235', 'St37-2'
+'S235J2', '1.0117'
+);
+
+INSERT INTO material_grade_dic(eu_symbol, ger_symbol) VALUES (
+'S355J2', '1.0570'
 );
 
 
