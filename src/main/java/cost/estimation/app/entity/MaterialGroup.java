@@ -7,18 +7,15 @@ import jakarta.persistence.Id;
 import lombok.*;
 
 @Entity
-@Data
 @Setter
 @Getter
-@Builder
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MaterialGradeDic {
+public class MaterialGroup {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long materialGradeId;
-    private String euSymbol;
-    private String gerSymbol;
-    private String gradeGroup;
+    private Long materialGroupId;
+    private String groupName;
 }

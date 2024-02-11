@@ -14,7 +14,13 @@ CREATE TABLE setting(
 CREATE TABLE material_grade_dic(
     material_grade_id BIGINT PRIMARY KEY AUTO_INCREMENT,
     eu_symbol VARCHAR(100),
-    ger_symbol VARCHAR(100)
+    ger_symbol VARCHAR(100),
+    grade_group VARCHAR(100)
+);
+
+CREATE TABLE material_group(
+    material_group_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    group_name VARCHAR(30)
 );
 
 
