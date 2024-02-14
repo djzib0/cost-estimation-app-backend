@@ -15,12 +15,26 @@ CREATE TABLE material_grade_dic(
     material_grade_id BIGINT PRIMARY KEY AUTO_INCREMENT,
     eu_symbol VARCHAR(100),
     ger_symbol VARCHAR(100),
+    density INT,
     grade_group VARCHAR(100)
 );
 
 CREATE TABLE material_group(
     material_group_id BIGINT PRIMARY KEY AUTO_INCREMENT,
     group_name VARCHAR(30)
+);
+
+CREATE TABLE plate_material(
+    plate_material_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    dimension_A INT,
+    dimension_B INT,
+    thickness INT,
+    weight INT,
+    is_painted BOOLEAN,
+    is_painted_both_sides BOOLEAN,
+    surface_to_conserve INT,
+    project_id BIGINT,
+    material_grade_id BIGINT
 );
 
 

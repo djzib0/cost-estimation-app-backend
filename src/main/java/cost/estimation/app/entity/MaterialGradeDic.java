@@ -20,5 +20,6 @@ public class MaterialGradeDic {
     private Long materialGradeId;
     private String euSymbol;
     private String gerSymbol;
+    private Double density;
     private String gradeGroup;
 }
