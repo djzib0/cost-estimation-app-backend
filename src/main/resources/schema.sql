@@ -37,4 +37,10 @@ CREATE TABLE plate_material(
     material_grade_id BIGINT
 );
 
+CREATE TABLE project(
+     project_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+     project_number VARCHAR(100),
+     project_client_number VARCHAR(100)
+);
+
 

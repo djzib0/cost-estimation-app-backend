@@ -59,6 +59,16 @@ FALSE,
 1
 );
 
+INSERT INTO project(project_number, project_client_number) VALUES (
+'32549',
+'NOZ14243258'
+);
+
+INSERT INTO project(project_number, project_client_number) VALUES (
+'32550',
+'ZL/2024/14'
+);
+
 
 
 

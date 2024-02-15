@@ -22,5 +22,8 @@ public class Project {
     @OneToMany
     @JoinColumn(name = "project_id")
     private List<PlateMaterial> plateMaterials;
+    @OneToMany
+    @JoinColumn(name= "project_id")
+    private List<PlateMaterial> plateMaterials2;
 
 }
