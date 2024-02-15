@@ -38,4 +38,13 @@ public class MaterialGradeDicService {
         editedMaterialGrade.setGradeGroup(materialGradeDic.getGradeGroup());
         return editedMaterialGrade;
     }
+
+    public Long countMaterialGrades() {
+       return (long) materialGradeDicRepository.findAll()
+                                               .size();
+    }
+
+    public void deleteMaterialGrade(Long id) {
+        materialGradeDicRepository.deleteById(id);
+    }
 }
