@@ -4,6 +4,7 @@ import cost.estimation.app.entity.MaterialGradeDic;
 import cost.estimation.app.repository.MaterialGradeDicRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -21,16 +22,18 @@ public class MaterialGradeDicService {
         return materialGradeDicRepository.findAll();
     }
 
-//    @Cacheable(value = "AllMaterialGradesByGradeGroup")
+    @Cacheable(value = "AllMaterialGradesByGradeGroup")
     public List<MaterialGradeDic> getAllMaterialGradesByGradeGroup(String group) {
         return materialGradeDicRepository.findAllByGradeGroup(group);
     }
 
+    @CacheEvict(value = "AllMaterialGradesByGradeGroup", allEntries = true)
     public MaterialGradeDic addMaterialGradeDic(MaterialGradeDic newMaterialGrade) {
         return materialGradeDicRepository.save(newMaterialGrade);
     }
 
     @Transactional
+    @CacheEvict(value = "AllMaterialGradesByGradeGroup", allEntries = true)
     public MaterialGradeDic editMaterialGradeDic(MaterialGradeDic materialGradeDic) {
         MaterialGradeDic editedMaterialGrade = materialGradeDicRepository.findById(materialGradeDic.getMaterialGradeId()).orElseThrow();
         editedMaterialGrade.setEuSymbol(materialGradeDic.getEuSymbol());
@@ -44,6 +47,7 @@ public class MaterialGradeDicService {
                                                .size();
     }
 
+    @CacheEvict(value = "AllMaterialGradesByGradeGroup", allEntries = true)
     public void deleteMaterialGrade(Long id) {
         materialGradeDicRepository.deleteById(id);
     }
