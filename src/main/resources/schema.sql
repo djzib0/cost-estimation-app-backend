@@ -13,7 +13,7 @@ CREATE TABLE setting(
 
 CREATE TABLE material_grade_dic(
     material_grade_id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    eu_symbol VARCHAR(100),
+    eu_symbol VARCHAR(100) UNIQUE,
     ger_symbol VARCHAR(100),
     density DECIMAL(100000, 2),
     grade_group VARCHAR(100)
