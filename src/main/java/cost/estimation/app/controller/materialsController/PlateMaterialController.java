@@ -18,7 +18,7 @@ public class PlateMaterialController {
         return plateMaterialService.getAllMaterials();
     }
 
-    @PutMapping("data/materials/platematerial/add")
+    @PostMapping("data/materials/platematerial/add")
     public PlateMaterial addPlateMaterial(@RequestBody PlateMaterial newPlateMaterial, @RequestParam Long materialGradeId) {
         return plateMaterialService.addPlateMaterial(newPlateMaterial, materialGradeId);
     }
