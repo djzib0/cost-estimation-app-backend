@@ -24,6 +24,12 @@ CREATE TABLE material_group(
     group_name VARCHAR(30)
 );
 
+CREATE TABLE project_type(
+    type_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    type_name VARCHAR(30)
+);
+
+
 CREATE TABLE plate_material(
     plate_material_id BIGINT PRIMARY KEY AUTO_INCREMENT,
     dimension_A INT,
@@ -37,10 +43,19 @@ CREATE TABLE plate_material(
     material_grade_id BIGINT
 );
 
+-- PROJECT --
 CREATE TABLE project(
      project_id BIGINT PRIMARY KEY AUTO_INCREMENT,
      project_number VARCHAR(100),
-     project_client_number VARCHAR(100)
+     project_client_number VARCHAR(100),
+     title VARCHAR(200),
+     type_id BIGINT,
+     drawing_number VARCHAR(200),
+     total_value NUMERIC(12,2) DEFAULT 0,
+     material_margin NUMERIC(4,2) DEFAULT 0,
+     outsourcing_margin NUMERIC(4,2) DEFAULT 0,
+     sale_margin NUMERIC(4, 2) DEFAULT 0,
+     date_created DATE DEFAULT CURRENT_TIMESTAMP
 );
 
 

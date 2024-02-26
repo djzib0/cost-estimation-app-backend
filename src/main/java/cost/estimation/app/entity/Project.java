@@ -4,6 +4,7 @@ import cost.estimation.app.entity.materials.PlateMaterial;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -19,11 +20,22 @@ public class Project {
     private Long projectId;
     private String projectNumber;
     private String projectClientNumber;
+    private String title;
+    // one record of the Project can only have one type
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(
+            name = "type_id",
+            referencedColumnName = "typeId"
+    )
+    private ProjectType projectType;
+    private String drawingNumber;
+    private Double totalValue;
     @OneToMany
     @JoinColumn(name = "project_id")
     private List<PlateMaterial> plateMaterials;
-    @OneToMany
-    @JoinColumn(name= "project_id")
-    private List<PlateMaterial> plateMaterials2;
+    private Double materialMargin;
+    private Double outsourcingMargin;
+    private Double saleMargin;
+    private Date dateCreated;
 
 }
