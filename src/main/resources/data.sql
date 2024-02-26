@@ -16,19 +16,19 @@ INSERT INTO setting(app_user_id, theme) VALUES(
 
 --
 INSERT INTO material_grade_dic(eu_symbol, ger_symbol, density, grade_group) VALUES (
-'S235J2', '1.0117', 8, 'steel'
+'S235J2', '1.0117', 8.0, 'steel'
 );
 
 INSERT INTO material_grade_dic(eu_symbol, ger_symbol, density, grade_group) VALUES (
-'S355J2', '1.0570', 8, 'steel'
+'S355J2', '1.0570', 8.0, 'steel'
 );
 
 INSERT INTO material_grade_dic(eu_symbol, ger_symbol, density, grade_group) VALUES (
-'316L', '1.4404', 8, 'st. st.'
+'316L', '1.4404', 8.0, 'st. st.'
 );
 
 INSERT INTO material_grade_dic(eu_symbol, ger_symbol, density, grade_group) VALUES (
-'ENAW-AlMg4.5Mn0.7	', '3.3547', 8, 'aluminum'
+'ENAW-AlMg4.5Mn0.7	', '3.3547', 8.0, 'aluminum'
 );
 
 

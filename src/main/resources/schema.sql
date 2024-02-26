@@ -13,9 +13,9 @@ CREATE TABLE setting(
 
 CREATE TABLE material_grade_dic(
     material_grade_id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    eu_symbol VARCHAR(100),
+    eu_symbol VARCHAR(100) UNIQUE,
     ger_symbol VARCHAR(100),
-    density INT,
+    density DECIMAL(100000, 2),
     grade_group VARCHAR(100)
 );
 
@@ -35,10 +35,10 @@ CREATE TABLE plate_material(
     dimension_A INT,
     dimension_B INT,
     thickness INT,
-    weight INT,
+    weight DECIMAL(100000, 2),
     is_painted BOOLEAN,
     is_painted_both_sides BOOLEAN,
-    surface_to_conserve INT,
+    surface_to_conserve DECIMAL(1000, 2),
     project_id BIGINT,
     material_grade_id BIGINT
 );
