@@ -20,9 +20,9 @@ public class Utilities {
         thickness = thickness / 1000; // mm to meter
         if (sidesToBePainted == 1) {
             surface = (2 * dimA * dimB) + (2 * dimA * thickness) + (2 * dimB * thickness);
-            return roundDouble(surface / 2, 2);
+            return roundDouble(surface / 2.0, 2);
         }
-        surface = (2 * dimA * dimB) + (2 * dimA * thickness) + (2 * dimB * thickness);
+        surface = (2.0 * dimA * dimB) + (2 * dimA * thickness) + (2 * dimB * thickness);
         return roundDouble(surface, 2);
     }
 
