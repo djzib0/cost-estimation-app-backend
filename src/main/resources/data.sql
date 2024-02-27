@@ -8,9 +8,13 @@ INSERT INTO app_user(first_name, last_name) VALUES(
 'choinska'
 );
 
-INSERT INTO setting(app_user_id, theme) VALUES(
+INSERT INTO setting(app_user_id, theme, steel_grade_a_default_price_per_kg,
+            steel_grade_s355_default_price_per_kg, stainless_steel_default_price_per_kg) VALUES(
 1,
-'dark'
+'dark',
+5.03,
+5.12,
+21.36
 );
 
 
@@ -70,7 +74,7 @@ INSERT INTO project_type(type_name) VALUES (
 -- ADDING MATERIALS --
 INSERT INTO plate_material(dimension_A, dimension_B, thickness, weight,
             quantity, is_ring, is_painted, is_painted_both_sides,
-            surface_to_conserve, cutting_time, project_id, material_grade_id) VALUES (
+            surface_to_conserve, cutting_time, project_id, price_per_kg, material_grade_id) VALUES (
 100,
 200,
 30,
@@ -82,6 +86,7 @@ FALSE,
 0.02,
 4.3,
 1,
+5.03,
 1
 );
 

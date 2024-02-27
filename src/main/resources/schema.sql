@@ -8,14 +8,17 @@ CREATE TABLE app_user(
 CREATE TABLE setting(
     setting_id BIGINT PRIMARY KEY AUTO_INCREMENT,
     app_user_id BIGINT,
-    theme VARCHAR(20)
+    theme VARCHAR(20),
+    steel_grade_a_default_price_per_kg NUMERIC(100, 1),
+    steel_grade_s355_default_price_per_kg NUMERIC(100, 1),
+    stainless_steel_default_price_per_kg NUMERIC(100, 1)
 );
 
 CREATE TABLE material_grade_dic(
     material_grade_id BIGINT PRIMARY KEY AUTO_INCREMENT,
     eu_symbol VARCHAR(100) UNIQUE,
     ger_symbol VARCHAR(100),
-    density DECIMAL(100000, 2),
+    density DECIMAL(100, 2),
     grade_group VARCHAR(100)
 );
 
@@ -35,14 +38,17 @@ CREATE TABLE plate_material(
     dimension_A INT,
     dimension_B INT,
     thickness INT,
-    weight DECIMAL(1000, 2),
+    weight DECIMAL(100, 2),
+    total_weight DECIMAL(100, 2),
     quantity INT,
     is_ring BOOLEAN,
     is_painted BOOLEAN,
     is_painted_both_sides BOOLEAN,
     surface_to_conserve DECIMAL(1000, 2),
-    cutting_time DECIMAL(1000, 2),
+    cutting_time DECIMAL(100, 2),
     project_id BIGINT,
+    price_per_kg NUMERIC(100, 2),
+    total_value NUMERIC(100, 2),
     material_grade_id BIGINT
 );
 
@@ -57,7 +63,7 @@ CREATE TABLE roundbar_material(
     surface_to_conserve DECIMAL(1000, 2),
     cutting_time DECIMAL(1000, 2),
     project_id BIGINT,
-    price_per_kg NUMERIC(100, 1),
+    price_per_kg NUMERIC(100, 2),
     material_grade_id BIGINT
 );
 

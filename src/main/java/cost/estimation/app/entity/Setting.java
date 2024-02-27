@@ -27,4 +27,10 @@ public class Setting {
     @JsonProperty
     private AppUser appUser;
     private String theme;
+    @Column(name = "steel_grade_a_default_price_per_kg")
+    private Double steelGradeADefaultPricePerKg;
+    @Column(name = "steel_grade_s355_default_price_per_kg")
+    private Double steelGradeS355DefaultPricePerKg;
+    @Column(name = "stainless_steel_default_price_per_kg")
+    private Double stainlessSteelDefaultPricePerKg;
 }

@@ -21,6 +21,8 @@ public class PlateMaterial {
     private Double dimensionB;
     private Double thickness;
     private Double weight;
+    @Column(name = "total_weight")
+    private Double totalWeight;
     private Integer quantity;
     private Boolean isRing;
     @Column(name = "is_painted")
@@ -32,6 +34,10 @@ public class PlateMaterial {
     private Double cuttingTime; // time in minutes, to be converted to hours and minutes|
     @Column(name = "project_id")
     private Long projectId;
+    @Column(name = "price_per_kg")
+    private Double pricePerKg;
+    @Column(name = "total_value")
+    private Double totalValue;
     // one entity of the material in calculation can only have one material grade
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(
