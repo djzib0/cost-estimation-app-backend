@@ -35,11 +35,29 @@ CREATE TABLE plate_material(
     dimension_A INT,
     dimension_B INT,
     thickness INT,
-    weight DECIMAL(100000, 2),
+    weight DECIMAL(1000, 2),
+    quantity INT,
+    is_ring BOOLEAN,
     is_painted BOOLEAN,
     is_painted_both_sides BOOLEAN,
     surface_to_conserve DECIMAL(1000, 2),
+    cutting_time DECIMAL(1000, 2),
     project_id BIGINT,
+    material_grade_id BIGINT
+);
+
+CREATE TABLE roundbar_material(
+    roundbar_material_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    diameter INT,
+    profile_length DECIMAL(100, 1),
+    weight DECIMAL(100, 1),
+    weight_per_meter DECIMAL(100, 2),
+    quantity INT,
+    is_painted BOOLEAN,
+    surface_to_conserve DECIMAL(1000, 2),
+    cutting_time DECIMAL(1000, 2),
+    project_id BIGINT,
+    price_per_kg NUMERIC(100, 1),
     material_grade_id BIGINT
 );
 

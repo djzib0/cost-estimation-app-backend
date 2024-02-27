@@ -67,18 +67,43 @@ INSERT INTO project_type(type_name) VALUES (
 );
 
 
-
-INSERT INTO plate_material(dimension_A, dimension_B, thickness, weight, is_painted, is_painted_both_sides, surface_to_conserve, project_id, material_grade_id) VALUES (
+-- ADDING MATERIALS --
+INSERT INTO plate_material(dimension_A, dimension_B, thickness, weight,
+            quantity, is_ring, is_painted, is_painted_both_sides,
+            surface_to_conserve, cutting_time, project_id, material_grade_id) VALUES (
 100,
 200,
 30,
 4.8,
+1,
+FALSE,
 TRUE,
 FALSE,
 0.02,
+4.3,
 1,
 1
 );
+
+INSERT INTO roundbar_material(diameter, profile_length, weight, weight_per_meter,
+            quantity, is_painted, surface_to_conserve, cutting_time,
+            project_id, price_per_kg, material_grade_id) VALUES (
+150,
+350,
+42.41,
+141.37,
+1,
+FALSE,
+0,
+16,
+1,
+11.3,
+1
+);
+
+
+
+-- ADDING PROJECTS --
 
 INSERT INTO project(project_number, project_client_number, title, type_id,
             drawing_number) VALUES (

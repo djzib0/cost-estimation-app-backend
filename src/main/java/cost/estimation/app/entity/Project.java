@@ -1,6 +1,7 @@
 package cost.estimation.app.entity;
 
 import cost.estimation.app.entity.materials.PlateMaterial;
+import cost.estimation.app.entity.materials.RoundbarMaterial;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -33,6 +34,9 @@ public class Project {
     @OneToMany
     @JoinColumn(name = "project_id")
     private List<PlateMaterial> plateMaterials;
+    @OneToMany
+    @JoinColumn(name = "project_id")
+    private List<RoundbarMaterial> roundbarMaterials;
     private Double materialMargin;
     private Double outsourcingMargin;
     private Double saleMargin;
