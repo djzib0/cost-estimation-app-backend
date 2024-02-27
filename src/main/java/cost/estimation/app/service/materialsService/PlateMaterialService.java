@@ -71,9 +71,6 @@ public class PlateMaterialService {
         // NOW IT'S ONLY FOR TESTS
         newPlateMaterial.setCuttingTime(12.18);
 
-        // TODO - below value must be also passed from frontend side
-        newPlateMaterial.setProjectId(1L);
-
         newPlateMaterial.setTotalValue(
                 utilities.roundDouble(newPlateMaterial.getTotalWeight() * newPlateMaterial.getPricePerKg(), 2)
         );
