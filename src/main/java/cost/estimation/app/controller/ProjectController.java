@@ -24,5 +24,4 @@ public class ProjectController {
     public Project getProject(@PathVariable("id") Long projectId) {
         return projectService.getProject(projectId);
     }
-
 }
