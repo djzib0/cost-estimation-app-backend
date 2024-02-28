@@ -43,4 +43,16 @@ public class Utilities {
         }
         return roundDouble(dimA * dimB * thickness * density, 2);
     }
+
+    public Double calculateRoundbarWeight(Double diameter, Double length, Double density) {
+        Double circleRadius = diameter / 2.0;
+        Double circleArea = Math.PI * Math.pow(circleRadius, 2);
+        return roundDouble(circleArea * length * density, 2);
+    }
+
+    public Double calculateRoundbarWeightPerMeter(Double diametedrInMeters, Double density) {
+        Double circleRadius = diametedrInMeters / 2.0;
+        Double circleArea = Math.PI * Math.pow(circleRadius, 2);
+        return roundDouble(circleArea * 1000 * density, 2);
+    }
 }

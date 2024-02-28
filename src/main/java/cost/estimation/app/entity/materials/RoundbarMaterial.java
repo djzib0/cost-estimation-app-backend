@@ -12,6 +12,8 @@ import lombok.*;
 @NoArgsConstructor
 public class RoundbarMaterial {
 
+    // TODO - add value and totalValue
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long roundbarMaterialId;
