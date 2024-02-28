@@ -46,7 +46,8 @@ public class PlateMaterialService {
 
         // weight calculation
         newPlateMaterial.setWeight(
-                utilities.roundDouble(dimA * dimB * thickness * density, 2)
+                utilities.calculatePlateWeight(dimA, dimB, thickness, density, newPlateMaterial.getIsRing())
+//                utilities.roundDouble(dimA * dimB * thickness * density, 2)
         );
 
         // total weight calculation

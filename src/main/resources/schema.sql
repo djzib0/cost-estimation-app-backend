@@ -9,9 +9,9 @@ CREATE TABLE setting(
     setting_id BIGINT PRIMARY KEY AUTO_INCREMENT,
     app_user_id BIGINT,
     theme VARCHAR(20),
-    steel_grade_a_default_price_per_kg NUMERIC(100, 1),
-    steel_grade_s355_default_price_per_kg NUMERIC(100, 1),
-    stainless_steel_default_price_per_kg NUMERIC(100, 1)
+    steel_grade_a_default_price_per_kg NUMERIC(100, 2),
+    steel_grade_s355_default_price_per_kg NUMERIC(100, 2),
+    stainless_steel_default_price_per_kg NUMERIC(100, 2)
 );
 
 CREATE TABLE material_grade_dic(

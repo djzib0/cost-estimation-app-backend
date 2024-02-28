@@ -1,5 +1,6 @@
 package cost.estimation.app.service.materialsService;
 
+import cost.estimation.app.entity.materials.PlateMaterial;
 import cost.estimation.app.entity.materials.RoundbarMaterial;
 import cost.estimation.app.repository.materialsRepository.RoundbarMaterialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,5 +16,9 @@ public class RoundbarMaterialService {
 
     public List<RoundbarMaterial> getAllRoundbars() {
         return roundbarMaterialRepository.findAll();
+    }
+
+    public RoundbarMaterial addRoundbarMaterial(RoundbarMaterial newRoundbarMaterial, Long materialGradeId) {
+        return roundbarMaterialRepository.save(newRoundbarMaterial);
     }
 }
