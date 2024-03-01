@@ -28,6 +28,10 @@ public class Utilities {
         return roundDouble(surface, 2);
     }
 
+    public Double calculateSurfaceByDiameterAndLength(Double diameterInMeter, Double lengthInMeters) {
+        return roundDouble((Math.PI *(diameterInMeter) * lengthInMeters), 2);
+    }
+
     public Double calculatePlateWeight(Double dimA, Double dimB, Double thickness, Double density, Boolean isRing) {
 
         System.out.println(dimB);
@@ -47,12 +51,12 @@ public class Utilities {
     public Double calculateRoundbarWeight(Double diameter, Double length, Double density) {
         Double circleRadius = diameter / 2.0;
         Double circleArea = Math.PI * Math.pow(circleRadius, 2);
-        return roundDouble(circleArea * length * density, 2);
+        return roundDouble(circleArea * length * density, 1);
     }
 
     public Double calculateRoundbarWeightPerMeter(Double diametedrInMeters, Double density) {
         Double circleRadius = diametedrInMeters / 2.0;
         Double circleArea = Math.PI * Math.pow(circleRadius, 2);
-        return roundDouble(circleArea * 1000 * density, 2);
+        return roundDouble(circleArea * 1000 * density, 1);
     }
 }

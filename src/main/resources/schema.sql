@@ -57,13 +57,14 @@ CREATE TABLE roundbar_material(
     diameter INT,
     profile_length DECIMAL(100, 1),
     weight DECIMAL(100, 1),
-    weight_per_meter DECIMAL(100, 2),
+    weight_per_meter DECIMAL(100, 1),
     quantity INT,
     is_painted BOOLEAN,
-    surface_to_conserve DECIMAL(1000, 2),
+    surface_to_conserve DECIMAL(100, 2),
     cutting_time DECIMAL(1000, 2),
     project_id BIGINT,
     price_per_kg NUMERIC(100, 2),
+    total_value NUMERIC(100, 2),
     material_grade_id BIGINT
 );
 

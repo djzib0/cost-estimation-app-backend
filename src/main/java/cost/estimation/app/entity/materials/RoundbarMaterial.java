@@ -12,8 +12,6 @@ import lombok.*;
 @NoArgsConstructor
 public class RoundbarMaterial {
 
-    // TODO - add value and totalValue
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long roundbarMaterialId;
@@ -32,6 +30,9 @@ public class RoundbarMaterial {
     private Long projectId;
     @Column(name = "price_per_kg")
     private Double pricePerKg;
+    @Column(name = "total_value")
+    private Double totalValue;
+    // many round bars can have one material grade each
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(
             name = "material_grade_id",
