@@ -33,4 +33,10 @@ public class Setting {
     private Double steelGradeS355DefaultPricePerKg;
     @Column(name = "stainless_steel_default_price_per_kg")
     private Double stainlessSteelDefaultPricePerKg;
+    @Column(name = "default_material_margin")
+    private Double defaultMaterialMargin;
+    @Column(name = "default_outsourcing_margin" )
+    private Double defaultOutsourcingMargin;
+    @Column(name = "default_sales_margin")
+    private Double defaultSalesMargin;
 }

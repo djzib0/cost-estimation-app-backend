@@ -9,12 +9,16 @@ INSERT INTO app_user(first_name, last_name) VALUES(
 );
 
 INSERT INTO setting(app_user_id, theme, steel_grade_a_default_price_per_kg,
-            steel_grade_s355_default_price_per_kg, stainless_steel_default_price_per_kg) VALUES(
+            steel_grade_s355_default_price_per_kg, stainless_steel_default_price_per_kg,
+            default_material_margin, default_outsourcing_margin, default_sales_margin) VALUES(
 1,
 'dark',
 5.03,
 5.12,
-21.36
+21.36,
+10,
+10,
+7.3
 );
 
 

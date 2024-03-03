@@ -11,7 +11,10 @@ CREATE TABLE setting(
     theme VARCHAR(20),
     steel_grade_a_default_price_per_kg NUMERIC(100, 2),
     steel_grade_s355_default_price_per_kg NUMERIC(100, 2),
-    stainless_steel_default_price_per_kg NUMERIC(100, 2)
+    stainless_steel_default_price_per_kg NUMERIC(100, 2),
+    default_material_margin NUMERIC(5, 1),
+    default_outsourcing_margin NUMERIC(5, 1),
+    default_sales_margin NUMERIC(5, 1)
 );
 
 CREATE TABLE material_grade_dic(
@@ -79,8 +82,9 @@ CREATE TABLE project(
      total_value NUMERIC(12,2) DEFAULT 0,
      material_margin NUMERIC(4,2) DEFAULT 0,
      outsourcing_margin NUMERIC(4,2) DEFAULT 0,
-     sale_margin NUMERIC(4, 2) DEFAULT 0,
-     date_created DATE DEFAULT CURRENT_TIMESTAMP
+     sales_margin NUMERIC(4, 2) DEFAULT 0,
+     date_created DATE DEFAULT CURRENT_TIMESTAMP,
+     date_last_edited DATE DEFAULT CURRENT_TIMESTAMP
 );
 
 

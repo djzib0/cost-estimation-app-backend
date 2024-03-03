@@ -23,7 +23,7 @@ public class Project {
     private String projectClientNumber;
     private String title;
     // one record of the Project can only have one type
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(
             name = "type_id",
             referencedColumnName = "typeId"
@@ -39,7 +39,7 @@ public class Project {
     private List<RoundbarMaterial> roundbarMaterials;
     private Double materialMargin;
     private Double outsourcingMargin;
-    private Double saleMargin;
+    private Double salesMargin;
     private Date dateCreated;
 
 }

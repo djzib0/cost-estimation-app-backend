@@ -3,9 +3,8 @@ package cost.estimation.app.controller;
 import cost.estimation.app.entity.Project;
 import cost.estimation.app.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,5 +22,20 @@ public class ProjectController {
     @GetMapping("data/projects/{id}")
     public Project getProject(@PathVariable("id") Long projectId) {
         return projectService.getProject(projectId);
+    }
+
+    @PostMapping("data/projects/add")
+    public Project addProject(@RequestBody Project newProject, @RequestParam(required = true) Long projectTypeId) {
+        return projectService.addProject(newProject, projectTypeId);
+    }
+
+    @PutMapping("data/projects/edit")
+    public Project editProject(@RequestBody Project project, @RequestParam(required = true) Long projectTypeId) {
+        return projectService.editProject(project, projectTypeId);
+    }
+
+    @DeleteMapping("data/projects/delete/{id}")
+    public void deleteProject(@PathVariable("id") Long projectId) {
+        projectService.deleteProject(projectId);
     }
 }
