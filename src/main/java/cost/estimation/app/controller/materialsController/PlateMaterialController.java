@@ -23,4 +23,16 @@ public class PlateMaterialController {
         return plateMaterialService.addPlateMaterial(newPlateMaterial, materialGradeId);
     }
 
+    @PutMapping("data/materials/platematerial/edit")
+    public PlateMaterial editPlateMaterial(
+            @RequestBody PlateMaterial plateMaterial,
+            @RequestParam(required = true) Long materialGradeId) {
+        return plateMaterialService.editPlateMaterial(plateMaterial, materialGradeId);
+    }
+
+    @DeleteMapping("data/materials/platematerial/delete/{id}")
+    public void deletePlateMaterial(@PathVariable("id") Long plateMaterialId) {
+        plateMaterialService.deletePlateMaterial(plateMaterialId);
+    }
+
 }

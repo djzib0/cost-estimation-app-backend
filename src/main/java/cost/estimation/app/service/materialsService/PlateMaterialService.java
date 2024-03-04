@@ -9,6 +9,7 @@ import cost.estimation.app.repository.MaterialGradeDicRepository;
 import cost.estimation.app.repository.SettingRepository;
 import cost.estimation.app.repository.materialsRepository.PlateMaterialRepository;
 import cost.estimation.app.utils.Utilities;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,7 +43,6 @@ public class PlateMaterialService {
         // grade passed as a parameter from frontend side
         MaterialGradeDic materialGrade = materialGradeDicRepository.findById(materialGradeId).orElseThrow();
         Double density = materialGrade.getDensity();
-
 
         // weight calculation
         newPlateMaterial.setWeight(
@@ -84,4 +84,73 @@ public class PlateMaterialService {
 
     // "importing" utils
     Utilities utilities = new Utilities();
+
+    @Transactional
+    public PlateMaterial editPlateMaterial(PlateMaterial plateMaterial, Long materialGradeId) {
+
+        PlateMaterial editedPlateMaterial = plateMaterialRepository.findById(plateMaterial.getPlateMaterialId()).orElseThrow();
+
+        Double dimA = plateMaterial.getDimensionA() / 1000.0; // mm to meter
+        Double dimB = plateMaterial.getDimensionB() / 1000.0; // mm to meter
+        Double thickness = plateMaterial.getThickness();
+
+        // setting new values
+        editedPlateMaterial.setDimensionA(plateMaterial.getDimensionA());
+        editedPlateMaterial.setDimensionB(plateMaterial.getDimensionB());
+        editedPlateMaterial.setThickness(plateMaterial.getThickness());
+
+        // takes density from the material grade dic item,
+        // grade passed as a parameter from frontend side
+        MaterialGradeDic materialGrade = materialGradeDicRepository.findById(materialGradeId).orElseThrow();
+        Double density = materialGrade.getDensity();
+
+        // weight calculation
+        editedPlateMaterial.setWeight(
+                utilities.calculatePlateWeight(dimA, dimB, thickness, density, plateMaterial.getIsRing())
+        );
+
+        // total weight calculation
+        editedPlateMaterial.setTotalWeight(
+                utilities.roundDouble(dimA * dimB * thickness * density * plateMaterial.getQuantity(), 2)
+        );
+
+        editedPlateMaterial.setQuantity(plateMaterial.getQuantity());
+
+        editedPlateMaterial.setIsRing(plateMaterial.getIsRing());
+        editedPlateMaterial.setIsPainted(plateMaterial.getIsPainted());
+        editedPlateMaterial.setIsPaintedBothSides(plateMaterial.getIsPaintedBothSides());
+
+        // surface to conserve calculation
+        Integer sideToBePainted;
+        if (plateMaterial.getIsPaintedBothSides()) {
+            sideToBePainted = 2;
+        } else {
+            sideToBePainted = 1;
+        }
+
+        editedPlateMaterial.setSurfaceToConserve(
+                utilities.calculateRectPlateSurface(dimA, dimB, thickness, sideToBePainted)
+        );
+
+        // TODO - CREATE UTILITY FUNCTION TO CALCULATE CUTTING TIME
+        // TODO - DEPENDING ON IT IS A RING OR RECTANGULAR PLATE ETC.
+        // NOW IT'S ONLY FOR TESTS
+        editedPlateMaterial.setCuttingTime(12.18);
+
+        editedPlateMaterial.setProjectId(plateMaterial.getProjectId());
+        editedPlateMaterial.setPricePerKg(plateMaterial.getPricePerKg());
+
+        editedPlateMaterial.setTotalValue(
+                utilities.roundDouble(editedPlateMaterial.getTotalWeight() * editedPlateMaterial.getPricePerKg(), 2)
+        );
+
+        editedPlateMaterial.setMaterialGrade(materialGrade);
+
+        return editedPlateMaterial;
+
+    }
+
+    public void deletePlateMaterial(Long plateMaterialId) {
+        plateMaterialRepository.deleteById(plateMaterialId);
+    }
 }

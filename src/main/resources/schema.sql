@@ -47,7 +47,7 @@ CREATE TABLE plate_material(
     is_ring BOOLEAN,
     is_painted BOOLEAN,
     is_painted_both_sides BOOLEAN,
-    surface_to_conserve DECIMAL(1000, 2),
+    surface_to_conserve DECIMAL(100, 2),
     cutting_time DECIMAL(100, 2),
     project_id BIGINT,
     price_per_kg NUMERIC(100, 2),
