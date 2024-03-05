@@ -1,6 +1,7 @@
 package cost.estimation.app.controller;
 
 import cost.estimation.app.entity.Project;
+import cost.estimation.app.error.ProjectNotFoundException;
 import cost.estimation.app.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class ProjectController {
     }
 
     @GetMapping("data/projects/{id}")
-    public Project getProject(@PathVariable("id") Long projectId) {
+    public Project getProject(@PathVariable("id") Long projectId) throws ProjectNotFoundException {
         return projectService.getProject(projectId);
     }
 

@@ -2,6 +2,7 @@ package cost.estimation.app.service;
 
 import cost.estimation.app.entity.Project;
 import cost.estimation.app.entity.ProjectType;
+import cost.estimation.app.error.ProjectNotFoundException;
 import cost.estimation.app.repository.ProjectRepository;
 import cost.estimation.app.repository.ProjectTypeRepository;
 import jakarta.transaction.Transactional;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProjectService {
@@ -23,8 +25,13 @@ public class ProjectService {
         return projectRepository.findAll();
     }
 
-    public Project getProject(Long projectId) {
-        return projectRepository.findById(projectId).orElseThrow();
+    public Project getProject(Long projectId) throws ProjectNotFoundException {
+        Optional<Project> project = projectRepository.findById(projectId);
+
+        if(!project.isPresent()) {
+            throw new ProjectNotFoundException("There is no project with id " + projectId);
+        }
+        return project.orElseThrow();
     }
 
     public Project addProject(Project newProject, Long projectTypeId) {

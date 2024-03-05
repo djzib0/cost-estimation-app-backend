@@ -16,4 +16,8 @@ public class MaterialGroupService {
     public List<MaterialGroup> getAllMaterialGroups() {
         return materialGroupRepository.findAll();
     }
+
+    public MaterialGroup getMaterialGroupById(Long materialGroupId) {
+        return materialGroupRepository.findById(materialGroupId).orElseThrow();
+    }
 }

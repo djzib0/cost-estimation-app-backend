@@ -2,7 +2,6 @@ package cost.estimation.app.repository;
 
 import cost.estimation.app.entity.MaterialGradeDic;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,4 +13,9 @@ public interface MaterialGradeDicRepository extends JpaRepository<MaterialGradeD
     List<MaterialGradeDic> findAllByGradeGroup(String group);
 
 
+    MaterialGradeDic findByEuSymbol(String euSymbol);
+
+    boolean existsByEuSymbol(String euSymbol);
+
+    boolean existsByGerSymbol(String gerSymbol);
 }

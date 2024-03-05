@@ -1,6 +1,7 @@
 package cost.estimation.app.controller;
 
 import cost.estimation.app.entity.MaterialGradeDic;
+import cost.estimation.app.error.MaterialGradeDicAlreadyExistException;
 import cost.estimation.app.service.MaterialGradeDicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,12 +20,12 @@ public class MaterialGradeDicController {
     }
 
     @PostMapping("/data/materialgrades/add")
-    public MaterialGradeDic addMaterialGradeDic(@RequestBody MaterialGradeDic newMaterialGrade) {
+    public MaterialGradeDic addMaterialGradeDic(@RequestBody MaterialGradeDic newMaterialGrade) throws MaterialGradeDicAlreadyExistException {
         return materialGradeDicService.addMaterialGradeDic(newMaterialGrade);
     }
 
     @PutMapping("/data/materialgrades/edit")
-    public MaterialGradeDic editMaterialGradeDic(@RequestBody MaterialGradeDic materialGradeDic) {
+    public MaterialGradeDic editMaterialGradeDic(@RequestBody MaterialGradeDic materialGradeDic) throws MaterialGradeDicAlreadyExistException {
         return materialGradeDicService.editMaterialGradeDic(materialGradeDic);
     }
 

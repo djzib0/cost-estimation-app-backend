@@ -1,6 +1,7 @@
 package cost.estimation.app.service;
 
 import cost.estimation.app.entity.MaterialGradeDic;
+import cost.estimation.app.error.MaterialGradeDicAlreadyExistException;
 import cost.estimation.app.repository.MaterialGradeDicRepository;
 import cost.estimation.app.utils.Utilities;
 import jakarta.transaction.Transactional;
@@ -30,21 +31,49 @@ public class MaterialGradeDicService {
     }
 
 //    @CacheEvict(value = "AllMaterialGradesByGradeGroup", allEntries = true)
-    public MaterialGradeDic addMaterialGradeDic(MaterialGradeDic newMaterialGrade) {
-        return materialGradeDicRepository.save(newMaterialGrade);
+    public MaterialGradeDic addMaterialGradeDic(MaterialGradeDic newMaterialGradeDic) throws MaterialGradeDicAlreadyExistException {
+
+        MaterialGradeDic materialGradeDic = materialGradeDicRepository.findByEuSymbol(newMaterialGradeDic.getEuSymbol());
+
+        if (materialGradeDicRepository.existsByEuSymbol(newMaterialGradeDic.getEuSymbol())) {
+            throw new MaterialGradeDicAlreadyExistException("This EU symbol already exists. Please use a different name");
+        }
+
+        if (materialGradeDicRepository.existsByGerSymbol(newMaterialGradeDic.getGerSymbol())) {
+            throw new MaterialGradeDicAlreadyExistException("This German symbol already exists. Please use a different name");
+        }
+
+        return materialGradeDicRepository.save(newMaterialGradeDic);
     }
 
     @Transactional
 //    @CacheEvict(value = "AllMaterialGradesByGradeGroup", allEntries = true)
-    public MaterialGradeDic editMaterialGradeDic(MaterialGradeDic materialGradeDic) {
-        System.out.println(materialGradeDic.getDensity());
-        Double density = materialGradeDic.getDensity();
-        MaterialGradeDic editedMaterialGrade = materialGradeDicRepository.findById(materialGradeDic.getMaterialGradeId()).orElseThrow();
-        editedMaterialGrade.setEuSymbol(materialGradeDic.getEuSymbol());
-        editedMaterialGrade.setGerSymbol(materialGradeDic.getGerSymbol());
-        editedMaterialGrade.setDensity(materialGradeDic.getDensity());
-        System.out.println(editedMaterialGrade.getDensity() + " value in edited entry");
-        editedMaterialGrade.setGradeGroup(materialGradeDic.getGradeGroup());
+    public MaterialGradeDic editMaterialGradeDic(MaterialGradeDic newMaterialGradeDic) throws MaterialGradeDicAlreadyExistException {
+
+        Double density = newMaterialGradeDic.getDensity();
+        MaterialGradeDic editedMaterialGrade = materialGradeDicRepository.findById(newMaterialGradeDic.getMaterialGradeId()).orElseThrow();
+
+        MaterialGradeDic materialGradeDic = materialGradeDicRepository.findByEuSymbol(newMaterialGradeDic.getEuSymbol());
+
+        // if the new value is the same as previous value, it means there is no change,
+        // and we can omit the UNIQUE constraint and save the entry after edit
+        if (materialGradeDicRepository.existsByEuSymbol(newMaterialGradeDic.getEuSymbol())
+        && !editedMaterialGrade.getEuSymbol().equals(newMaterialGradeDic.getEuSymbol())) {
+            throw new MaterialGradeDicAlreadyExistException("This EU symbol already exists. Please use a different name");
+        }
+
+        // if the new value is the same as previous value, it means there is no change,
+        // and we can omit the UNIQUE constraint and save the entry after edit
+        if (materialGradeDicRepository.existsByGerSymbol(newMaterialGradeDic.getGerSymbol())
+        && !editedMaterialGrade.getGerSymbol().equals(newMaterialGradeDic.getGerSymbol())) {
+            throw new MaterialGradeDicAlreadyExistException("This German symbol already exists. Please use a different name");
+        }
+
+        editedMaterialGrade.setEuSymbol(newMaterialGradeDic.getEuSymbol());
+        editedMaterialGrade.setGerSymbol(newMaterialGradeDic.getGerSymbol());
+        editedMaterialGrade.setDensity(newMaterialGradeDic.getDensity());
+        editedMaterialGrade.setGradeGroup(newMaterialGradeDic.getGradeGroup());
+
         return editedMaterialGrade;
     }
 
