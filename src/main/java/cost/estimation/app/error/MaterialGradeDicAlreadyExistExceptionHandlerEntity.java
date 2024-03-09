@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class MaterialGradeDicAlreadyExistExceptionHandlerEntity extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(MaterialGradeDicAlreadyExistException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseEntity<ErrorMessage> materialGradeDiCAlreadyExist(MaterialGradeDicAlreadyExistException exception,
                                                                      WebRequest request) {
         ErrorMessage message = new ErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR,

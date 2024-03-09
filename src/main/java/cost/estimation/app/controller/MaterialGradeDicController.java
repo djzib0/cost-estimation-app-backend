@@ -14,6 +14,11 @@ public class MaterialGradeDicController {
     @Autowired
     private MaterialGradeDicService materialGradeDicService;
 
+    @GetMapping("/data/allmaterialgrades")
+    public List<MaterialGradeDic> getAllMaterialGrades() {
+        return materialGradeDicService.getAllMaterialGrades();
+    }
+
     @GetMapping("/data/materialgrades")
     public List<MaterialGradeDic> getAllMaterialGradesByGradeGroup(@RequestParam String group) {
         return materialGradeDicService.getAllMaterialGradesByGradeGroup(group);

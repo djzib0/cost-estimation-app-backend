@@ -34,7 +34,7 @@ public class MaterialGradeDicService {
     public MaterialGradeDic addMaterialGradeDic(MaterialGradeDic newMaterialGradeDic) throws MaterialGradeDicAlreadyExistException {
 
         MaterialGradeDic materialGradeDic = materialGradeDicRepository.findByEuSymbol(newMaterialGradeDic.getEuSymbol());
-
+        System.out.println(materialGradeDicRepository.existsByEuSymbol(newMaterialGradeDic.getEuSymbol()));
         if (materialGradeDicRepository.existsByEuSymbol(newMaterialGradeDic.getEuSymbol())) {
             throw new MaterialGradeDicAlreadyExistException("This EU symbol already exists. Please use a different name");
         }
