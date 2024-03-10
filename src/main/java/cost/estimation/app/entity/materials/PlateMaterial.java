@@ -39,7 +39,7 @@ public class PlateMaterial {
     @Column(name = "total_value")
     private Double totalValue;
     // one entity of the material in calculation can only have one material grade
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(
             name = "material_grade_id",
             referencedColumnName = "materialGradeId"
