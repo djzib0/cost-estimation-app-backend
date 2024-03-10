@@ -19,15 +19,16 @@ public class PlateMaterialController {
     }
 
     @PostMapping("data/materials/platematerial/add")
-    public PlateMaterial addPlateMaterial(@RequestBody PlateMaterial newPlateMaterial, @RequestParam Long materialGradeId) {
+    public PlateMaterial addPlateMaterial(@RequestBody PlateMaterial newPlateMaterial,
+                                          @RequestParam(required = true) Long materialGradeId) {
         return plateMaterialService.addPlateMaterial(newPlateMaterial, materialGradeId);
     }
 
     @PutMapping("data/materials/platematerial/edit")
     public PlateMaterial editPlateMaterial(
             @RequestBody PlateMaterial plateMaterial,
-            @RequestParam(required = true) Long materialGradeId) {
-        return plateMaterialService.editPlateMaterial(plateMaterial, materialGradeId);
+            @RequestParam(required = true) Long materialGradeId, @RequestParam Long plateMaterialId) {
+        return plateMaterialService.editPlateMaterial(plateMaterial, materialGradeId, plateMaterialId);
     }
 
     @DeleteMapping("data/materials/platematerial/delete/{id}")

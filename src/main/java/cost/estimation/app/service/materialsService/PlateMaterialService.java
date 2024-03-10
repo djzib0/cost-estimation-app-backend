@@ -86,9 +86,9 @@ public class PlateMaterialService {
     Utilities utilities = new Utilities();
 
     @Transactional
-    public PlateMaterial editPlateMaterial(PlateMaterial plateMaterial, Long materialGradeId) {
+    public PlateMaterial editPlateMaterial(PlateMaterial plateMaterial, Long materialGradeId, Long plateMaterialId) {
 
-        PlateMaterial editedPlateMaterial = plateMaterialRepository.findById(plateMaterial.getPlateMaterialId()).orElseThrow();
+        PlateMaterial editedPlateMaterial = plateMaterialRepository.findById(plateMaterialId).orElseThrow();
 
         Double dimA = plateMaterial.getDimensionA() / 1000.0; // mm to meter
         Double dimB = plateMaterial.getDimensionB() / 1000.0; // mm to meter
