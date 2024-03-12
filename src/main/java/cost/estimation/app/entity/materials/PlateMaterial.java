@@ -38,11 +38,8 @@ public class PlateMaterial {
     private Double pricePerKg;
     @Column(name = "total_value")
     private Double totalValue;
-    // one entity of the material in calculation can only have one material grade
-    @ManyToOne
-    @JoinColumn(
-            name = "material_grade_id",
-            referencedColumnName = "materialGradeId"
-    )
-    private MaterialGradeDic materialGrade;
+    @Column(name = "material_grade")
+    private String materialGrade;
+    private Double density;
+    private String remark;
 }

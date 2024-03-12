@@ -64,7 +64,9 @@ public class RoundbarMaterialService {
                 newRoundbarMaterial.getWeight() * newRoundbarMaterial.getPricePerKg() * newRoundbarMaterial.getQuantity()
         );
 
-        newRoundbarMaterial.setMaterialGrade(materialGrade);
+        newRoundbarMaterial.setMaterialGrade(materialGrade.getEuSymbol());
+
+        newRoundbarMaterial.setDensity(materialGrade.getDensity());
 
         return roundbarMaterialRepository.save(newRoundbarMaterial);
     }

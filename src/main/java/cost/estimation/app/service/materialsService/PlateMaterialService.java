@@ -76,7 +76,9 @@ public class PlateMaterialService {
                 utilities.roundDouble(newPlateMaterial.getTotalWeight() * newPlateMaterial.getPricePerKg(), 2)
         );
 
-        newPlateMaterial.setMaterialGrade(materialGrade);
+        newPlateMaterial.setMaterialGrade(materialGrade.getEuSymbol());
+
+        newPlateMaterial.setDensity(materialGrade.getDensity());
 
         // saving new plateMaterial
         return plateMaterialRepository.save(newPlateMaterial);
@@ -144,7 +146,11 @@ public class PlateMaterialService {
                 utilities.roundDouble(editedPlateMaterial.getTotalWeight() * editedPlateMaterial.getPricePerKg(), 2)
         );
 
-        editedPlateMaterial.setMaterialGrade(materialGrade);
+        editedPlateMaterial.setMaterialGrade(materialGrade.getEuSymbol());
+
+        editedPlateMaterial.setDensity(materialGrade.getDensity());
+
+        editedPlateMaterial.setRemark(plateMaterial.getRemark());
 
         return editedPlateMaterial;
 

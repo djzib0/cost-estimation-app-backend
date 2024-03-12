@@ -52,7 +52,9 @@ CREATE TABLE plate_material(
     project_id BIGINT,
     price_per_kg NUMERIC(100, 2),
     total_value NUMERIC(100, 2),
-    material_grade_id BIGINT
+    material_grade VARCHAR(100),
+    density DECIMAL(100, 2),
+    remark VARCHAR(500)
 );
 
 CREATE TABLE roundbar_material(
@@ -68,7 +70,9 @@ CREATE TABLE roundbar_material(
     project_id BIGINT,
     price_per_kg NUMERIC(100, 2),
     total_value NUMERIC(100, 2),
-    material_grade_id BIGINT
+    material_grade VARCHAR(100),
+    density DECIMAL(100, 2),
+    remark VARCHAR(500)
 );
 
 -- PROJECT --

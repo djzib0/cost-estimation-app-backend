@@ -32,11 +32,7 @@ public class RoundbarMaterial {
     private Double pricePerKg;
     @Column(name = "total_value")
     private Double totalValue;
-    // many round bars can have one material grade each
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(
-            name = "material_grade_id",
-            referencedColumnName = "materialGradeId"
-    )
-    private MaterialGradeDic materialGrade;
+    @Column(name = "material_grade")
+    private String materialGrade;
+    private Double density;
 }
