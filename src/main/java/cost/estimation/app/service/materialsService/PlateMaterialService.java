@@ -112,9 +112,10 @@ public class PlateMaterialService {
         );
 
         // total weight calculation
-        editedPlateMaterial.setTotalWeight(
-                utilities.roundDouble(dimA * dimB * thickness * density * plateMaterial.getQuantity(), 2)
-        );
+//        editedPlateMaterial.setTotalWeight(
+//                utilities.roundDouble(dimA * dimB * thickness * density * plateMaterial.getQuantity(), 2)
+//        );
+        editedPlateMaterial.setTotalWeight(editedPlateMaterial.getWeight() * plateMaterial.getQuantity());
 
         editedPlateMaterial.setQuantity(plateMaterial.getQuantity());
 
