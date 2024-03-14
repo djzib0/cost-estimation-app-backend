@@ -118,11 +118,12 @@ FALSE,
 'test'
 );
 
-INSERT INTO roundbar_material(diameter, profile_length, weight, weight_per_meter,
+INSERT INTO roundbar_material(diameter, profile_length, weight, total_weight, weight_per_meter,
             quantity, is_painted, surface_to_conserve, cutting_time,
-            project_id, price_per_kg, material_grade, density) VALUES (
+            project_id, price_per_kg, material_grade, density, remark) VALUES (
 150,
 350,
+42.41,
 42.41,
 141.37,
 1,
@@ -132,7 +133,8 @@ FALSE,
 1,
 11.3,
 'S355J2',
-8.0
+8.0,
+'test remark for round bar'
 );
 
 

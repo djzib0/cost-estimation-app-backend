@@ -72,4 +72,8 @@ public class RoundbarMaterialService {
     }
 
     Utilities utilities = new Utilities();
+
+    public List<RoundbarMaterial> getRoundbarsByProjectId(Long projectId) {
+        return roundbarMaterialRepository.findAllByProjectId(projectId);
+    }
 }

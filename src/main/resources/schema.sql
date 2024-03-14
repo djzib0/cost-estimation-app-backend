@@ -62,6 +62,7 @@ CREATE TABLE roundbar_material(
     diameter INT,
     profile_length DECIMAL(100, 1),
     weight DECIMAL(100, 1),
+    total_weight DECIMAL(100, 1),
     weight_per_meter DECIMAL(100, 1),
     quantity INT,
     is_painted BOOLEAN,

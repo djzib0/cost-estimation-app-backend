@@ -18,6 +18,7 @@ public class RoundbarMaterial {
     private Integer diameter;
     private Double profileLength;
     private Double weight;
+    private Double totalWeight;
     @Column(name = "weight_per_meter")
     private Double weightPerMeter; // calculated from given diameter and grade
     private Integer quantity;
@@ -35,4 +36,5 @@ public class RoundbarMaterial {
     @Column(name = "material_grade")
     private String materialGrade;
     private Double density;
+    private String remark;
 }
