@@ -18,6 +18,11 @@ public class PlateMaterialController {
         return plateMaterialService.getAllMaterials();
     }
 
+    @GetMapping("data/project/{projectId}/materials/platematerial")
+    public List<PlateMaterial> getAllPlateMaterialsByProjectId(@PathVariable(required = false, name = "projectId") Long projectId) {
+        return plateMaterialService.getAllPlateMaterialsByProjectId(projectId);
+    }
+
     @PostMapping("data/materials/platematerial/add")
     public PlateMaterial addPlateMaterial(@RequestBody PlateMaterial newPlateMaterial,
                                           @RequestParam(required = true) Long materialGradeId) {

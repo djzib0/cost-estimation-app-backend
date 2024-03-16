@@ -18,8 +18,8 @@ public class RoundbarMaterialController {
         return roundbarMaterialService.getAllRoundbars();
     }
 
-    @GetMapping("data/materials/roundbar/{id}")
-    public List<RoundbarMaterial> getRoundbarsByProjectId(@PathVariable(required = true, name = "id") Long projectId) {
+    @GetMapping("data/project/{projectId}/materials/roundbar")
+    public List<RoundbarMaterial> getRoundbarsByProjectId(@PathVariable(required = true, name = "projectId") Long projectId) {
         return roundbarMaterialService.getRoundbarsByProjectId(projectId);
     }
 

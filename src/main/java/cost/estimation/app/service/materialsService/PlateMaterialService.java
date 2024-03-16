@@ -160,4 +160,8 @@ public class PlateMaterialService {
     public void deletePlateMaterial(Long plateMaterialId) {
         plateMaterialRepository.deleteById(plateMaterialId);
     }
+
+    public List<PlateMaterial> getAllPlateMaterialsByProjectId(Long projectId) {
+        return plateMaterialRepository.findAllByProjectId(projectId);
+    }
 }
