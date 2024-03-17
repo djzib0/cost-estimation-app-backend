@@ -27,4 +27,17 @@ public class RoundbarMaterialController {
     public RoundbarMaterial addRoundbarMaterial(@RequestBody RoundbarMaterial newRoundbarMaterial, @RequestParam Long materialGradeId) {
         return roundbarMaterialService.addRoundbarMaterial(newRoundbarMaterial, materialGradeId);
     }
+
+    @PutMapping("data/materials/roundbar/edit")
+    public RoundbarMaterial editRoundbarMaterial(
+            @RequestBody RoundbarMaterial roundbarMaterial,
+            @RequestParam(required = true) Long materialGradeId
+    ) {
+        return roundbarMaterialService.editRoundbarMaterial(roundbarMaterial, materialGradeId);
+    };
+
+    @DeleteMapping("data/materials/roundbarmaterial/delete/{id}")
+    public void deleteRoundbarMaterial(@PathVariable("id") Long roundbarMaterialId) {
+        roundbarMaterialService.deleteRoundbarMaterial(roundbarMaterialId);
+    }
 }

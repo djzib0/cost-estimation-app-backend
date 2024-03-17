@@ -32,8 +32,8 @@ public class PlateMaterialController {
     @PutMapping("data/materials/platematerial/edit")
     public PlateMaterial editPlateMaterial(
             @RequestBody PlateMaterial plateMaterial,
-            @RequestParam(required = true) Long materialGradeId, @RequestParam Long plateMaterialId) {
-        return plateMaterialService.editPlateMaterial(plateMaterial, materialGradeId, plateMaterialId);
+            @RequestParam(required = true) Long materialGradeId) {
+        return plateMaterialService.editPlateMaterial(plateMaterial, materialGradeId);
     }
 
     @DeleteMapping("data/materials/platematerial/delete/{id}")

@@ -88,9 +88,9 @@ public class PlateMaterialService {
     Utilities utilities = new Utilities();
 
     @Transactional
-    public PlateMaterial editPlateMaterial(PlateMaterial plateMaterial, Long materialGradeId, Long plateMaterialId) {
+    public PlateMaterial editPlateMaterial(PlateMaterial plateMaterial, Long materialGradeId) {
 
-        PlateMaterial editedPlateMaterial = plateMaterialRepository.findById(plateMaterialId).orElseThrow();
+        PlateMaterial editedPlateMaterial = plateMaterialRepository.findById(plateMaterial.getPlateMaterialId()).orElseThrow();
 
         Double dimA = plateMaterial.getDimensionA() / 1000.0; // mm to meter
         Double dimB = plateMaterial.getDimensionB() / 1000.0; // mm to meter
@@ -111,10 +111,6 @@ public class PlateMaterialService {
                 utilities.calculatePlateWeight(dimA, dimB, thickness, density, plateMaterial.getIsRing())
         );
 
-        // total weight calculation
-//        editedPlateMaterial.setTotalWeight(
-//                utilities.roundDouble(dimA * dimB * thickness * density * plateMaterial.getQuantity(), 2)
-//        );
         editedPlateMaterial.setTotalWeight(editedPlateMaterial.getWeight() * plateMaterial.getQuantity());
 
         editedPlateMaterial.setQuantity(plateMaterial.getQuantity());
@@ -131,9 +127,14 @@ public class PlateMaterialService {
             sideToBePainted = 1;
         }
 
-        editedPlateMaterial.setSurfaceToConserve(
-                utilities.calculateRectPlateSurface(dimA, dimB, thickness, sideToBePainted)
-        );
+        Double surfaceToConserve;
+        if (editedPlateMaterial.getIsPainted()) {
+            surfaceToConserve = utilities.calculateRectPlateSurface(dimA, dimB, thickness, sideToBePainted);
+        } else {
+            surfaceToConserve = 0.0;
+        }
+
+        editedPlateMaterial.setSurfaceToConserve(surfaceToConserve);
 
         // TODO - CREATE UTILITY FUNCTION TO CALCULATE CUTTING TIME
         // TODO - DEPENDING ON IT IS A RING OR RECTANGULAR PLATE ETC.

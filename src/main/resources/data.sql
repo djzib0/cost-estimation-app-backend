@@ -36,7 +36,7 @@ INSERT INTO material_grade_dic(eu_symbol, ger_symbol, density, grade_group) VALU
 );
 
 INSERT INTO material_grade_dic(eu_symbol, ger_symbol, density, grade_group) VALUES (
-'ENAW-AlMg4.5Mn0.7	', '3.3547', 8.0, 'aluminum'
+'ENAW-AlMg4.5Mn0.7	', '3.3547', 2.7, 'aluminum'
 );
 
 
