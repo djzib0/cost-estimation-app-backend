@@ -125,7 +125,8 @@ public class RoundbarMaterialService {
             surfaceToConserve = 0.0;
         }
 
-        editedRoundbarMaterial.setSurfaceToConserve(surfaceToConserve);
+        editedRoundbarMaterial.setSurfaceToConserve(surfaceToConserve *
+                                                    editedRoundbarMaterial.getQuantity());
 
         // TODO - this is a cutting time for test,
         // create a function to calculate a cutting time based on

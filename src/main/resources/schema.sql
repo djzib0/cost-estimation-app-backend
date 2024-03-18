@@ -35,7 +35,26 @@ CREATE TABLE project_type(
     type_name VARCHAR(30)
 );
 
+CREATE TABLE hour_type(
+    type_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    type_name VARCHAR(100),
+    default_price_per_hour NUMERIC(100, 2)
+);
 
+--HOURS
+CREATE TABLE project_operation (
+    operation_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    operation_title VARCHAR(200),
+    quantity INT,
+    total_value NUMERIC(100, 2),
+    hour_type_id BIGINT,
+    hour_type_name VARCHAR(100),
+    price_per_hour NUMERIC(100, 2),
+    remark VARCHAR(500),
+    project_id BIGINT
+);
+
+--MATERIALS
 CREATE TABLE plate_material(
     plate_material_id BIGINT PRIMARY KEY AUTO_INCREMENT,
     dimension_A INT,

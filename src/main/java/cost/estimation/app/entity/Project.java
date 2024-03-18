@@ -32,6 +32,9 @@ public class Project {
     private String drawingNumber;
     private Double totalValue;
     @OneToMany
+    @JoinColumn(name = "project_id", referencedColumnName = "projectId")
+    private List<ProjectOperation> operations;
+    @OneToMany
     @JoinColumn(name = "project_id")
     private List<PlateMaterial> plateMaterials;
     @OneToMany

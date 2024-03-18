@@ -74,6 +74,57 @@ INSERT INTO project_type(type_name) VALUES (
 'other'
 );
 
+INSERT INTO hour_type(type_name, default_price_per_hour) VALUES (
+'assembly',
+60
+);
+
+INSERT INTO hour_type(type_name, default_price_per_hour) VALUES (
+'welding',
+60
+);
+
+INSERT INTO hour_type(type_name, default_price_per_hour) VALUES (
+'small machining',
+110
+);
+
+--ADDING HOURS
+INSERT INTO project_operation(operation_title, quantity, total_value, hour_type_id,
+            hour_type_name, price_per_hour, remark, project_id) VALUES (
+'montaz szkieletu',
+12,
+720,
+1,
+'assembly',
+60.0,
+'test remark for project operation',
+1
+);
+
+INSERT INTO project_operation(operation_title, quantity, total_value, hour_type_id,
+            hour_type_name, price_per_hour, remark, project_id) VALUES (
+'framework welding',
+10,
+600,
+2,
+'welding',
+60.0,
+'test remark for project operation',
+1
+);
+
+INSERT INTO project_operation(operation_title, quantity, total_value, hour_type_id,
+            hour_type_name, price_per_hour, remark, project_id) VALUES (
+'framework welding',
+2,
+240,
+3,
+'small machining',
+120.0,
+'test remark for project operation',
+1
+);
 
 -- ADDING MATERIALS --
 INSERT INTO plate_material(dimension_A, dimension_B, thickness, weight,

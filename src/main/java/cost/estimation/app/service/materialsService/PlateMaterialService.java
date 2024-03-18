@@ -134,7 +134,8 @@ public class PlateMaterialService {
             surfaceToConserve = 0.0;
         }
 
-        editedPlateMaterial.setSurfaceToConserve(surfaceToConserve);
+        editedPlateMaterial.setSurfaceToConserve(surfaceToConserve *
+                                                 editedPlateMaterial.getQuantity());
 
         // TODO - CREATE UTILITY FUNCTION TO CALCULATE CUTTING TIME
         // TODO - DEPENDING ON IT IS A RING OR RECTANGULAR PLATE ETC.
