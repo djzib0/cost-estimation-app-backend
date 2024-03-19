@@ -5,6 +5,7 @@ import cost.estimation.app.entity.ProjectOperation;
 import cost.estimation.app.service.ProjectOperationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -18,5 +19,10 @@ public class ProjectOperationController {
     @GetMapping("data/operations/all")
     public List<ProjectOperation> getAllProjectOperations() {
         return projectOperationService.getAllProjectOperations();
+    }
+
+    @GetMapping("data/project/{id}/operations/all")
+    public List<ProjectOperation> getAllProjectOperationsByProjectId(@PathVariable("id") Long projectId) {
+        return projectOperationService.getAllProjectOperationsByProjectId(projectId);
     }
 }

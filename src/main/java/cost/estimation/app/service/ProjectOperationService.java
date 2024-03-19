@@ -16,4 +16,8 @@ public class ProjectOperationService {
     public List<ProjectOperation> getAllProjectOperations() {
         return  projectOperationRepository.findAll();
     }
+
+    public List<ProjectOperation> getAllProjectOperationsByProjectId(Long projectId) {
+        return projectOperationRepository.findAllByProjectId(projectId);
+    }
 }
