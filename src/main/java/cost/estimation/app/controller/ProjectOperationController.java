@@ -4,9 +4,7 @@ import cost.estimation.app.entity.Project;
 import cost.estimation.app.entity.ProjectOperation;
 import cost.estimation.app.service.ProjectOperationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +22,23 @@ public class ProjectOperationController {
     @GetMapping("data/project/{id}/operations/all")
     public List<ProjectOperation> getAllProjectOperationsByProjectId(@PathVariable("id") Long projectId) {
         return projectOperationService.getAllProjectOperationsByProjectId(projectId);
+    }
+
+    @PostMapping("data/operations/add")
+    public ProjectOperation addProjectOperation(@RequestBody ProjectOperation newProjectOperation,
+                                                @RequestParam(required = true) Long projectId) {
+        return projectOperationService.addProjectOperation(newProjectOperation, projectId);
+    }
+
+    @PutMapping("data/operations/edit")
+    public ProjectOperation editProjectOperation(
+            @RequestBody ProjectOperation projectOperation,
+            @RequestParam(required = true) Long projectId) {
+        return projectOperationService.editProjectOperation(projectOperation, projectId);
+    }
+
+    @DeleteMapping("data/operations/delete/{id}")
+    public void deleteProjectOperation(@PathVariable("id") Long projectOperationId) {
+        projectOperationService.deleteProjectOperation(projectOperationId);
     }
 }
