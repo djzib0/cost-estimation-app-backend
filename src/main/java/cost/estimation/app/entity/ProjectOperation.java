@@ -30,6 +30,8 @@ public class ProjectOperation {
     @Column(name = "price_per_hour")
     private Double operationPricePerHour;
     private String remark;
+    @Column(name = "position_in_project")
+    private Long positionInProject;
     @Column(name = "project_id")
     private Long projectId;
 }

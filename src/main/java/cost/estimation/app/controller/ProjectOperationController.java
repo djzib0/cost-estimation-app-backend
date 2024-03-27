@@ -4,6 +4,7 @@ import cost.estimation.app.entity.Project;
 import cost.estimation.app.entity.ProjectOperation;
 import cost.estimation.app.service.ProjectOperationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public class ProjectOperationController {
     @PutMapping("data/operations/edit")
     public ProjectOperation editProjectOperation(
             @RequestBody ProjectOperation projectOperation,
-            @RequestParam(required = true) Long projectId) {
+            @RequestParam Long projectId) {
         return projectOperationService.editProjectOperation(projectOperation, projectId);
     }
 
@@ -41,4 +42,12 @@ public class ProjectOperationController {
     public void deleteProjectOperation(@PathVariable("id") Long projectOperationId) {
         projectOperationService.deleteProjectOperation(projectOperationId);
     }
+
+    @PutMapping("data/operation/changeposition")
+    public void increaseProjectOperationPosition(
+            @RequestParam Long editedOperationId,
+            @RequestParam Long switchedOperationId) {
+        projectOperationService.increaseProjectOperationPosition(editedOperationId, switchedOperationId);
+    }
+
 }

@@ -91,7 +91,8 @@ INSERT INTO hour_type(type_name, default_price_per_hour) VALUES (
 
 --ADDING HOURS
 INSERT INTO project_operation(operation_title, quantity, total_value, hour_type_id,
-            hour_type_name, price_per_hour, remark, project_id) VALUES (
+            hour_type_name, price_per_hour, remark,
+            position_in_project, project_id) VALUES (
 'montaz szkieletu',
 12,
 720,
@@ -99,11 +100,13 @@ INSERT INTO project_operation(operation_title, quantity, total_value, hour_type_
 'assembly',
 60.0,
 'test remark for project operation',
+1,
 1
 );
 
 INSERT INTO project_operation(operation_title, quantity, total_value, hour_type_id,
-            hour_type_name, price_per_hour, remark, project_id) VALUES (
+            hour_type_name, price_per_hour, remark,
+            position_in_project, project_id) VALUES (
 'framework welding',
 10,
 600,
@@ -111,18 +114,21 @@ INSERT INTO project_operation(operation_title, quantity, total_value, hour_type_
 'welding',
 60.0,
 'test remark for project operation',
+2,
 1
 );
 
 INSERT INTO project_operation(operation_title, quantity, total_value, hour_type_id,
-            hour_type_name, price_per_hour, remark, project_id) VALUES (
-'framework welding',
+            hour_type_name, price_per_hour, remark,
+            position_in_project, project_id) VALUES (
+'machining surface',
 2,
 240,
 3,
 'small machining',
 120.0,
 'test remark for project operation',
+3,
 1
 );
 

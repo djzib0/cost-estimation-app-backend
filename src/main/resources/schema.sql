@@ -51,6 +51,7 @@ CREATE TABLE project_operation (
     hour_type_name VARCHAR(100),
     price_per_hour NUMERIC(100, 2),
     remark VARCHAR(500),
+    position_in_project INT,
     project_id BIGINT
 );
 
