@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProjectOperationService {
@@ -44,8 +46,10 @@ public class ProjectOperationService {
         // set position in project
         // first count the existing operations in the project
         Long numberOfProjectOperationsInProject = projectOperationRepository.findAllByProjectId(projectId, Sort.by(Sort.Direction.ASC, "positionInProject")).stream().count();
+        List<ProjectOperation> listOfOperations = projectOperationRepository.findAllByProjectId(projectId, Sort.by(Sort.Direction.ASC, "positionInProject")).stream().toList();
+        ProjectOperation operationWithMaxPosition = listOfOperations.stream().max(Comparator.comparingLong(ProjectOperation::getPositionInProject)).get();
         // then set the position for a new operation with "count + 1"
-        newProjectOperation.setPositionInProject(numberOfProjectOperationsInProject + 1);
+        newProjectOperation.setPositionInProject(operationWithMaxPosition.getPositionInProject() + 1);
         System.out.println(numberOfProjectOperationsInProject + " number of items");
 
         return projectOperationRepository.save(newProjectOperation);

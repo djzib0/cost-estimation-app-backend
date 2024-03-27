@@ -100,7 +100,7 @@ INSERT INTO project_operation(operation_title, quantity, total_value, hour_type_
 'assembly',
 60.0,
 'test remark for project operation',
-1,
+12,
 1
 );
 
