@@ -44,13 +44,18 @@ public class ProjectOperationService {
         newProjectOperation.setTotalValue(newProjectOperation.getQuantity() * pricePerHour);
 
         // set position in project
-        // first count the existing operations in the project
-        Long numberOfProjectOperationsInProject = projectOperationRepository.findAllByProjectId(projectId, Sort.by(Sort.Direction.ASC, "positionInProject")).stream().count();
+        // first create list of all operations
         List<ProjectOperation> listOfOperations = projectOperationRepository.findAllByProjectId(projectId, Sort.by(Sort.Direction.ASC, "positionInProject")).stream().toList();
-        ProjectOperation operationWithMaxPosition = listOfOperations.stream().max(Comparator.comparingLong(ProjectOperation::getPositionInProject)).get();
-        // then set the position for a new operation with "count + 1"
-        newProjectOperation.setPositionInProject(operationWithMaxPosition.getPositionInProject() + 1);
-        System.out.println(numberOfProjectOperationsInProject + " number of items");
+        // if the list is not empty find the entry with the highest value of position in project
+        try {
+            ProjectOperation operationWithMaxPosition = listOfOperations.stream().max(Comparator.comparingLong(ProjectOperation::getPositionInProject)).get();
+            // then set for a new operation the highest value of position + 1
+            newProjectOperation.setPositionInProject(operationWithMaxPosition.getPositionInProject() + 1);
+        } catch(Exception e) {
+            // if the list is empty, it means there are no operations yet in this particular project so the position
+            // is set to 1
+            newProjectOperation.setPositionInProject(1L);
+        }
 
         return projectOperationRepository.save(newProjectOperation);
     }
