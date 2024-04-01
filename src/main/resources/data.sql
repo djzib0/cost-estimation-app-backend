@@ -135,8 +135,8 @@ INSERT INTO project_operation(operation_title, quantity, total_value, hour_type_
 -- ADDING MATERIALS --
 INSERT INTO plate_material(dimension_A, dimension_B, thickness, weight,
             quantity, is_ring, is_painted, is_painted_both_sides,
-            surface_to_conserve, cutting_time,
-            project_id, price_per_kg, material_grade, density, remark) VALUES (
+            surface_to_conserve, cutting_time, project_id,
+            price_per_kg, total_value, material_grade, density, remark) VALUES (
 100,
 200,
 30,
@@ -149,6 +149,7 @@ FALSE,
 4.3,
 1,
 5.03,
+24.14,
 'S355J2',
 8.0,
 'test'
@@ -156,8 +157,8 @@ FALSE,
 
 INSERT INTO plate_material(dimension_A, dimension_B, thickness, weight,
             quantity, is_ring, is_painted, is_painted_both_sides,
-            surface_to_conserve, cutting_time,
-            project_id, price_per_kg, material_grade, density, remark) VALUES (
+            surface_to_conserve, cutting_time, project_id,
+            price_per_kg, total_value, material_grade, density, remark) VALUES (
 100,
 200,
 30,
@@ -170,18 +171,19 @@ FALSE,
 4.3,
 1,
 5.03,
-'nie ma takiego materiału',
+24.14,
+'316L',
 8.0,
 'test'
 );
 
 INSERT INTO roundbar_material(diameter, profile_length, weight, total_weight, weight_per_meter,
             quantity, is_painted, surface_to_conserve, cutting_time,
-            project_id, price_per_kg, material_grade, density, remark) VALUES (
+            project_id, price_per_kg, total_value, material_grade, density, remark) VALUES (
 150,
 350,
-42.41,
-42.41,
+49.5,
+49.5,
 141.37,
 1,
 FALSE,
@@ -189,6 +191,7 @@ FALSE,
 16,
 1,
 11.3,
+479.12,
 'S355J2',
 8.0,
 'test remark for round bar'
