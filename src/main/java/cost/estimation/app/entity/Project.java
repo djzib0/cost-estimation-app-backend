@@ -29,6 +29,8 @@ public class Project {
             referencedColumnName = "typeId"
     )
     private ProjectType projectType;
+    @Column(name = "net_weight")
+    private Double netWeight;
     private String drawingNumber;
     private Double totalValue;
     @OneToMany

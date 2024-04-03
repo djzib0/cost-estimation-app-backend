@@ -104,6 +104,7 @@ CREATE TABLE project(
      title VARCHAR(200),
      type_id BIGINT,
      drawing_number VARCHAR(200),
+     net_weight NUMERIC(12, 2) DEFAULT 0,
      total_value NUMERIC(12,2) DEFAULT 0,
      material_margin NUMERIC(4,2) DEFAULT 0,
      outsourcing_margin NUMERIC(4,2) DEFAULT 0,

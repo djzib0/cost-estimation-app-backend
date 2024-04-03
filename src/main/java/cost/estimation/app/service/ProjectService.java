@@ -37,7 +37,6 @@ public class ProjectService {
     public Project addProject(Project newProject, Long projectTypeId) {
         ProjectType projectType = projectTypeRepository.findById(projectTypeId).orElseThrow();
         newProject.setProjectType(projectType);
-        System.out.println("I'm here");
 
         return projectRepository.save(newProject);
     }
@@ -52,6 +51,7 @@ public class ProjectService {
         editedProject.setProjectType(projectType);
         editedProject.setTitle(project.getTitle());
         editedProject.setDrawingNumber(project.getDrawingNumber());
+        editedProject.setNetWeight(project.getNetWeight());
         editedProject.setMaterialMargin(project.getMaterialMargin());
         editedProject.setOutsourcingMargin(project.getOutsourcingMargin());
         editedProject.setSalesMargin(project.getSalesMargin());
