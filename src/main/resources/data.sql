@@ -197,6 +197,17 @@ FALSE,
 'test remark for round bar'
 );
 
+INSERT INTO other_material(name, quantity, unit_name, price_per_unit,
+            total_value, remark, project_id) VALUES (
+'bolt M12 X 20 DIN933 kl 8.8',
+12,
+'piece',
+0.7,
+8.4,
+'bolts for securing stern tube ring',
+1
+);
+
 
 
 -- ADDING PROJECTS --

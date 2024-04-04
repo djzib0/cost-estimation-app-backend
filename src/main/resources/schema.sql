@@ -96,6 +96,17 @@ CREATE TABLE roundbar_material(
     remark VARCHAR(500)
 );
 
+CREATE TABLE other_material(
+    other_material_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(200),
+    quantity INT,
+    unit_name VARCHAR(200),
+    price_per_unit NUMERIC(100, 2),
+    total_value NUMERIC(100, 2),
+    remark VARCHAR(500),
+    project_id BIGINT
+);
+
 -- PROJECT --
 CREATE TABLE project(
      project_id BIGINT PRIMARY KEY AUTO_INCREMENT,
