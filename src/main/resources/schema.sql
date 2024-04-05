@@ -25,6 +25,12 @@ CREATE TABLE material_grade_dic(
     grade_group VARCHAR(100)
 );
 
+CREATE TABLE unit(
+    unit_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    unit_name VARCHAR(50),
+    unit_name_abbreviation VARCHAR(20)
+);
+
 CREATE TABLE material_group(
     material_group_id BIGINT PRIMARY KEY AUTO_INCREMENT,
     group_name VARCHAR(30)

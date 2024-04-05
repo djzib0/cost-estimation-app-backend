@@ -39,6 +39,21 @@ INSERT INTO material_grade_dic(eu_symbol, ger_symbol, density, grade_group) VALU
 'ENAW-AlMg4.5Mn0.7	', '3.3547', 2.7, 'aluminum'
 );
 
+INSERT INTO unit(unit_name, unit_name_abbreviation) VALUES (
+'kilogram',
+'kg'
+);
+
+INSERT INTO unit(unit_name, unit_name_abbreviation) VALUES (
+'piece',
+'pc'
+);
+
+INSERT INTO unit(unit_name, unit_name_abbreviation) VALUES (
+'meter',
+'mtr'
+);
+
 
 -- CONSTANT VALUES --
 INSERT INTO material_group(group_name) VALUES (
