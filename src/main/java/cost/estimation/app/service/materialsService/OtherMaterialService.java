@@ -18,6 +18,10 @@ public class OtherMaterialService {
         return otherMaterialRepository.findAll();
     }
 
+    public List<OtherMaterial> getOtherMaterialsByProjectId(Long projectId) {
+        return otherMaterialRepository.findAllByProjectId(projectId);
+    }
+
     public OtherMaterial addNewOtherMaterial(OtherMaterial newOtherMaterial) {
         Integer quantity = newOtherMaterial.getQuantity();
         Double pricePerUnit = newOtherMaterial.getPricePerUnit();

@@ -18,6 +18,11 @@ public class OtherMaterialController {
         return otherMaterialService.getAllOtherMaterials();
     }
 
+    @GetMapping("data/project/{projectId}/materials/other")
+    public List<OtherMaterial> getOtherMaterialsByProjectId(@PathVariable(name = "projectId") Long projectId) {
+        return otherMaterialService.getOtherMaterialsByProjectId(projectId);
+    }
+
     @PostMapping("data/materials/othermaterials/add")
     public OtherMaterial addNewOtherMaterial(
             @RequestBody OtherMaterial newOtherMaterial) {
