@@ -224,6 +224,34 @@ INSERT INTO other_material(name, quantity, unit_name, price_per_unit,
 );
 
 
+-- OUTSOURCING --
+INSERT INTO outsourcing(outsourcing_name, contractor_name, outsourcing_value,
+            remark, project_id) VALUES (
+'annealing',
+'gafako',
+6500,
+'Annealing in 650 degrees for 2hrs',
+1
+);
+
+INSERT INTO outsourcing(outsourcing_name, contractor_name, outsourcing_value,
+            remark, project_id) VALUES (
+'bending cone plates',
+'gdansk shipyard',
+3200,
+'',
+1
+);
+
+INSERT INTO outsourcing(outsourcing_name, contractor_name, outsourcing_value,
+            remark, project_id) VALUES (
+'machining groove (keyway)',
+'hania',
+850,
+'',
+2
+);
+
 
 -- ADDING PROJECTS --
 

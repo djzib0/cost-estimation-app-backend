@@ -46,6 +46,9 @@ public class Project {
     @OneToMany
     @JoinColumn(name = "project_id")
     private List<OtherMaterial> otherMaterials;
+    @OneToMany
+    @JoinColumn(name = "project_id")
+    private List<Outsourcing> outsourcing;
     private Double materialMargin;
     private Double outsourcingMargin;
     private Double salesMargin;

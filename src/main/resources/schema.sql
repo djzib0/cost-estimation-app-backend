@@ -102,6 +102,17 @@ CREATE TABLE roundbar_material(
     remark VARCHAR(500)
 );
 
+
+-- OUTSOURCING
+CREATE TABLE outsourcing(
+    outsourcing_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    outsourcing_name VARCHAR(200),
+    contractor_name VARCHAR(100),
+    outsourcing_value NUMERIC(100, 2),
+    remark VARCHAR(500),
+    project_id BIGINT
+);
+
 CREATE TABLE other_material(
     other_material_id BIGINT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(200),
